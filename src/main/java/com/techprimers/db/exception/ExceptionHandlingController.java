@@ -29,4 +29,12 @@ public class ExceptionHandlingController {
         response.setErrors(ValidationUtil.fromBindingErrors(result));
         return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(DuplicationCountryException.class)
+    public ResponseEntity<ExceptionResponse> duplicteCountry(DuplicationCountryException ex) {
+        ExceptionResponse response = new ExceptionResponse();
+        response.setErrorCode("Diplication CountryName");
+        response.setErrorMessage(ex.getMessage());
+
+        return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
+    }
 }

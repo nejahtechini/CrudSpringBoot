@@ -1,9 +1,12 @@
 package com.techprimers.db.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import com.techprimes.db.validators.Teamname;
@@ -23,9 +26,10 @@ public class Users {
     private String teamName;
     @Column(name = "salary")
     private Integer salary;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_address", referencedColumnName = "id")
+    private UsersAddress userAddress;
     
-    public Users() {
-    }
 
     public Integer getId() {
         return id;
@@ -58,4 +62,13 @@ public class Users {
     public void setSalary(Integer salary) {
         this.salary = salary;
     }
+
+	public UsersAddress getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UsersAddress userAddress) {
+		this.userAddress = userAddress;
+	}
+    
 }
