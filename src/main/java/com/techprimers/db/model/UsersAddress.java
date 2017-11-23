@@ -10,11 +10,11 @@ public class UsersAddress {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String countryName;
-	 @OneToOne(mappedBy = "userAddress")
-     private Users user ;
-	 
+	@OneToOne(mappedBy = "userAddress")
+	private Users user;
+
 	public UsersAddress(String country) {
-		this.countryName=country ;
+		this.countryName = country;
 	}
 
 	public UsersAddress() {
@@ -46,5 +46,5 @@ public class UsersAddress {
 	public void setUser(Users user) {
 		this.user = user;
 	}
-	
+
 }

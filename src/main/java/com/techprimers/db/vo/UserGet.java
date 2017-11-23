@@ -1,11 +1,15 @@
 package com.techprimers.db.vo;
 
 public class UserGet {
-	Integer id ;
+	Integer id;
 	private String name;
 	private Integer salary;
 	private String teamName;
-	private String countryName;
+	private UsersAddressGet userAddress;
+
+	public UserGet() {
+
+	}
 
 	public Integer getId() {
 		return id;
@@ -39,12 +43,12 @@ public class UserGet {
 		this.teamName = teamName;
 	}
 
-	public String getCountryName() {
-		return countryName;
+	public UsersAddressGet getUserAddress() {
+		return userAddress;
 	}
 
-	public void setCountryName(String coountryName) {
-		this.countryName = coountryName;
+	public void setUserAddress(UsersAddressGet userAddress) {
+		this.userAddress = userAddress;
 	}
 
 }

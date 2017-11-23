@@ -30,7 +30,9 @@ public class Users {
     @JoinColumn(name = "id_address", referencedColumnName = "id")
     private UsersAddress userAddress;
     
-
+	public Users() {
+		
+	}
     public Integer getId() {
         return id;
     }
@@ -70,5 +72,6 @@ public class Users {
 	public void setUserAddress(UsersAddress userAddress) {
 		this.userAddress = userAddress;
 	}
+
     
 }

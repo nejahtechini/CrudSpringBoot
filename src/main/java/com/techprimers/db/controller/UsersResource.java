@@ -21,21 +21,20 @@ import com.techprimers.db.repository.UsersRepository;
 import com.techprimers.db.service.UserService;
 import com.techprimers.db.vo.UserGet;
 
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/rest/users")
 public class UsersResource {
 
 	@Autowired
 	UsersRepository usersRepository;
+	
 	@Autowired
 	UserService userService;
 
 	@GetMapping(value = "id/{id}")
 	public Users getUserById(@PathVariable("id") Integer id) {
-
 		Users user = usersRepository.findOne(id);
-
 		if (user == null) {
 			throw new ResourceNotFoundException(id, "user not found in your dataBase");
 		}
@@ -43,34 +42,29 @@ public class UsersResource {
 	}
 
 	@GetMapping(value = "name/{name}")
-	public Users getUserByName(@PathVariable("name") String name) {
+	public UserGet getUserByName(@PathVariable("name") String name) {
+		UserGet user = userService.findByName(name);
 
-		Users user = usersRepository.findByName(name);
 		if (user == null) {
 			throw new ResourceNotFoundException(name, "user not found in your dataBase");
 		}
-
 		return user;
 	}
 
 	@GetMapping(value = "/all")
 	public List<UserGet> getAll() {
 		return userService.findAllUserGet();
-
 	}
 
 	@RequestMapping(value = "/load", method = RequestMethod.POST)
-	public void persist(@Valid @RequestBody final UserGet userGet) throws DuplicationCountryException {
-	userService.createUsers(userGet);
-
+	public void persist(@Valid @RequestBody final Users user) throws DuplicationCountryException {
+		userService.createUsers(user);
 	}
 
 	@DeleteMapping(value = "/user/{id}")
 	public Boolean deleteUser(@PathVariable Integer id) {
-
 		usersRepository.delete(id);
 		return true;
-
 	}
 
 }
