@@ -18,7 +18,7 @@ import com.techprimers.db.exception.DuplicationCountryException;
 import com.techprimers.db.exception.ResourceNotFoundException;
 import com.techprimers.db.model.Users;
 import com.techprimers.db.repository.UsersRepository;
-import com.techprimers.db.service.UserService;
+import com.techprimers.db.service.UserServiceImp;
 import com.techprimers.db.vo.UserGet;
 
 @CrossOrigin
@@ -30,7 +30,7 @@ public class UsersResource {
 	UsersRepository usersRepository;
 	
 	@Autowired
-	UserService userService;
+	UserServiceImp userService;
 
 	@GetMapping(value = "id/{id}")
 	public Users getUserById(@PathVariable("id") Integer id) {
@@ -42,8 +42,8 @@ public class UsersResource {
 	}
 
 	@GetMapping(value = "name/{name}")
-	public UserGet getUserByName(@PathVariable("name") String name) {
-		UserGet user = userService.findByName(name);
+	public Users getUserByName(@PathVariable("name") String name) {
+		Users user = userService.findByName(name);
 
 		if (user == null) {
 			throw new ResourceNotFoundException(name, "user not found in your dataBase");
@@ -55,11 +55,14 @@ public class UsersResource {
 	public List<UserGet> getAll() {
 		return userService.findAllUserGet();
 	}
-
+	
+	
 	@RequestMapping(value = "/load", method = RequestMethod.POST)
-	public void persist(@Valid @RequestBody final Users user) throws DuplicationCountryException {
-		userService.createUsers(user);
-	}
+	public Users persist(@Valid @RequestBody final Users user) throws DuplicationCountryException {
+		System.out.print("---------------------------" + user.getId() + user.getUserAddress().getId());
+		 	return userService.createUsers(user);
+		  	}
+	
 
 	@DeleteMapping(value = "/user/{id}")
 	public Boolean deleteUser(@PathVariable Integer id) {

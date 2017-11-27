@@ -1,5 +1,6 @@
 package com.techprimers.db.exception;
 
+import org.dozer.MappingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -37,4 +38,14 @@ public class ExceptionHandlingController {
 
         return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
     }
+    
+    @ExceptionHandler(MappingException.class)
+       public ResponseEntity<ExceptionResponse> sourceNull(MappingException ex) {
+         
+           ExceptionResponse response = new ExceptionResponse();
+           response.setErrorCode("Dozer Mapping Null Source");
+           response.setErrorMessage("Invalid Mapping Source.");
+       
+             return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
+         }
 }

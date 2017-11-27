@@ -26,8 +26,12 @@ public class Users {
     private String teamName;
     @Column(name = "salary")
     private Integer salary;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_address", referencedColumnName = "id")
+
+    
+    
+    
+    @OneToOne(targetEntity = UsersAddress.class, cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false, name = "FK_USERADDRESS")
     private UsersAddress userAddress;
     
 	public Users() {

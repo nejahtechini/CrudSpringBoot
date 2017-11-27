@@ -12,22 +12,22 @@
 		</field-exclude>
 	</mapping>
 
-	<mapping map-id="getUserFrom">
-		<class-a>com.techprimers.db.model.Users</class-a>
-		<class-b>com.techprimers.db.vo.UserGet</class-b>
-		<field map-id="excludeUserFromAddress">
-			<a>userAddress</a>
-			<b>userAddress</b>
-		</field>
-	</mapping>
+<!-- 	<mapping map-id="getUserFrom"> -->
+<!-- 		<class-a>com.techprimers.db.model.Users</class-a> -->
+<!-- 		<class-b>com.techprimers.db.vo.UserGet</class-b> -->
+<!-- 		<field map-id="excludeUserFromAddress"> -->
+<!-- 			<a>userAddress</a> -->
+<!-- 			<b>userAddress</b> -->
+<!-- 		</field> -->
+<!-- 	</mapping> -->
 
-	<mapping map-id="excludeUserFromAddress">
-		<class-a>com.techprimers.db.model.UsersAddress</class-a>
-		<class-b>com.techprimers.db.vo.UsersAddressGet</class-b>
-		<field-exclude>
-			<a>user</a>
-			<b>user</b>
-		</field-exclude>
-	</mapping>
+<!-- 	<mapping map-id="excludeUserFromAddress"> -->
+<!-- 		<class-a>com.techprimers.db.model.UsersAddress</class-a> -->
+<!-- 		<class-b>com.techprimers.db.vo.UsersAddressGet</class-b> -->
+<!-- 		<field-exclude> -->
+<!-- 			<a>user</a> -->
+<!-- 			<b>user</b> -->
+<!-- 		</field-exclude> -->
+<!-- 	</mapping> -->
 
 </mappings>
