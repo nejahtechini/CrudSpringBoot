@@ -57,8 +57,8 @@ public class UsersResource {
 	}
 
 	@RequestMapping(value = "/load", method = RequestMethod.POST)
-	public void persist(@Valid @RequestBody final Users user) throws DuplicationCountryException {
-		userService.createUsers(user);
+	public Users persist(@Valid @RequestBody final Users user) throws DuplicationCountryException {
+		return userService.createUsers(user);
 	}
 
 	@DeleteMapping(value = "/user/{id}")
