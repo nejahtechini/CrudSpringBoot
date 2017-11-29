@@ -6,10 +6,10 @@
 	<mapping>
 		<class-a>com.techprimers.db.model.Users</class-a>
 		<class-b>com.techprimers.db.vo.UserGet</class-b>
-		<field-exclude>
+	<!-- 	<field-exclude>
 			<a>userAddress</a>
 			<b>userAddress</b>
-		</field-exclude>
+		</field-exclude> -->
 	</mapping>
 
 <!-- 	<mapping map-id="getUserFrom"> -->

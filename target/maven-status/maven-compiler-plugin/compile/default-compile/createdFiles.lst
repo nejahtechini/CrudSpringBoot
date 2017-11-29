@@ -6,6 +6,7 @@ com\techprimers\db\controller\UsersResource.class
 com\techprimers\db\repository\AddressRepository.class
 com\techprimers\db\exception\DuplicationCountryException.class
 com\techprimers\db\repository\UsersRepository.class
+com\techprimers\db\service\UserServiceImp.class
 com\techprimers\db\vo\UsersAddressGet.class
 com\techprimes\db\validators\Teamname.class
 com\techprimers\db\SpringBootMysqldbApplication.class

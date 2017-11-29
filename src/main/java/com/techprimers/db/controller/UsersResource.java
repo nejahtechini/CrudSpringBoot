@@ -5,6 +5,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,12 +54,16 @@ public class UsersResource {
 		return user;
 	}
 
-	@GetMapping(value = "/all")
-	public List<UserGet> getAll() {
-		return userService.findAllUserGet();
+	@GetMapping(value = "/allPage")
+	Page<Users>  getPages(Pageable pageable) {
+		return userService.findUserPage(pageable);
 	}
-	
-	
+	@GetMapping(value = "/allUser")
+	List<Users>  getAllUser() {
+		
+		return userService.findAllUser();
+	}
+
 	@RequestMapping(value = "/load", method = RequestMethod.POST)
 	public Users persist(@Valid @RequestBody final Users user) throws DuplicationCountryException {
 		System.out.print("---------------------------" + user.getId() + user.getUserAddress().getId());

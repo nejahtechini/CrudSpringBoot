@@ -2,10 +2,15 @@ package com.techprimers.db.repository;
 
 import com.techprimers.db.model.Users;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface UsersRepository extends JpaRepository<Users, Integer> {
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
+public interface UsersRepository extends PagingAndSortingRepository<Users, Integer> {
+    Page <Users> findAll(Pageable pageable) ;
 	Users findByName(String name);
+	List <Users>findAll();
 	
 }
