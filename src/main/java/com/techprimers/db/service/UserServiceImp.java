@@ -25,11 +25,8 @@ public class UserServiceImp implements UserService {
 	@Autowired
 	UsersRepository userRepository;
 
-	@Autowired
-	DozerBeanMapper mapper;
-
 	public Page<Users> findUserPage(Pageable pageable) {
-		List<UserGet> listUserGet = new ArrayList<UserGet>();
+	//	List<UserGet> listUserGet = new ArrayList<UserGet>();
 //		Sort sort = new Sort(new Sort.Order(Direction.ASC, "name"));
 //		Pageable pageable = new PageRequest(0, 2, sort);	
 //		listUsers.forEach(item -> {
@@ -41,7 +38,6 @@ public class UserServiceImp implements UserService {
 	}
 
 	public Users createUsers(Users user) throws DuplicationCountryException {
-		System.out.print("++++++++++++++++++++++" + user.getId() + user.getUserAddress().getId());
 		 	return userRepository.save(user);
 		  	}
 
